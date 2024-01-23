@@ -1,4 +1,5 @@
 import {
+    Button,
     Card,
     CardHeader,
     Table,
@@ -28,6 +29,7 @@ const ListeAnnonce = () => {
                               <th scope="col">Prix</th>
                               <th scope="col">Proprietaire</th>
                               <th scope="col">Etat</th>
+                              <th scope="col"></th>
                               <th scope="col" />
                             </tr>
                           </thead>
@@ -46,6 +48,13 @@ const ListeAnnonce = () => {
                                   <div>
                                     </div>
                                 </div>
+                              </td>
+                              <td>
+                              <div className="text-center">
+                                    <Button className="my-4" color="primary" type="button">
+                                        Valider
+                                    </Button>
+                                    </div>
                               </td>
                             </tr>
                         </tbody>
