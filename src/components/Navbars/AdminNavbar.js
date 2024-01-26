@@ -34,6 +34,11 @@ import {
   Media,
 } from "reactstrap";
 
+const path = "../../assets/img/theme/team-4-800x800.jpg";
+console.log('path tsotra : ' + path);
+console.log('path replace : ' + path.replace('admin', ''));
+
+
 const AdminNavbar = (props) => {
   return (
     <>
@@ -64,7 +69,7 @@ const AdminNavbar = (props) => {
                   <span className="avatar avatar-sm rounded-circle">
                     <img
                       alt="..."
-                      src={require("../../assets/img/theme/team-4-800x800.jpg".replace('admin', ''))}
+                      src={require("../../assets/img/theme/team-4-800x800.jpg")}
                     />
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
