@@ -34,11 +34,6 @@ import {
   Media,
 } from "reactstrap";
 
-const path = "../../assets/img/theme/team-4-800x800.jpg";
-console.log('path tsotra : ' + path);
-console.log('path replace : ' + path.replace('admin', ''));
-
-
 const AdminNavbar = (props) => {
   return (
     <>
