@@ -64,7 +64,7 @@ const AdminNavbar = (props) => {
                   <span className="avatar avatar-sm rounded-circle">
                     <img
                       alt="..."
-                      src={require("../../assets/img/theme/team-4-800x800.jpg")}
+                      src="https://main--cosmic-kitsune-6bc1b6.netlify.app/static/media/team-4-800x800.99c612eb60728a5aeeb0.jpg"
                     />
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
