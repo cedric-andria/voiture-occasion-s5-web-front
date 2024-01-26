@@ -16,7 +16,6 @@
 
 */
 import { Link } from "react-router-dom";
-import popo from '../../assets/img/theme/team-4-800x800.jpg';
 // reactstrap components
 import {
   DropdownMenu,
@@ -65,7 +64,7 @@ const AdminNavbar = (props) => {
                   <span className="avatar avatar-sm rounded-circle">
                     <img
                       alt="..."
-                      src={popo.replace('admin/', '')}
+                      src={require("../../assets/img/theme/team-4-800x800.jpg".replace('admin', ''))}
                     />
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
