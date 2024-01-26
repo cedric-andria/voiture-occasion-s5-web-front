@@ -65,7 +65,7 @@ const AdminNavbar = (props) => {
                   <span className="avatar avatar-sm rounded-circle">
                     <img
                       alt="..."
-                      src={popo}
+                      src={popo.replace('admin/', '')}
                     />
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
