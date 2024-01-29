@@ -5,33 +5,40 @@ export const getHeaderJWT = () => ({
     }
 })
 
-export const callPost = (url = "", data, logged = false) => {
-    console.log("Calling url : "+url);
-    let toReturn = null;
-    let headers = {
-            headers: {"Content-Type": "application/json",
+export const callPost = async(url = "", data, logged = false) => {
+    return new Promise(async (resolve, reject) => {
+        console.log("Calling url : "+url);
+        let toReturn = [];
+        let headers = {
+            "Content-Type": "application/json"
+
         }
-    };
+    
         if (logged) {
             headers = getHeaderJWT();
         }
-        fetch(url, {
+        toReturn = await fetch(url, {
             method: "POST",
             body: data,
             headers: {
                 ...headers
             }
         })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            toReturn = data;
-        }).catch((error) => {
-            console.log("Error");
-        console.error(error);
-    });
+        toReturn = await toReturn.json()
+        console.log(toReturn);
+        resolve(toReturn);
+        // .then((response) => response.json())
+        // .then((data) => {
+        //     console.log("Data ====",data);
+        //     resolve(data);
+        // }).catch((error) => {
+        //     console.log("Error");
+        //     console.error(error);
+        // });
+        // console.log("To return : "+toReturn)
 
-    return toReturn;
+    })
+  
 }
 
 

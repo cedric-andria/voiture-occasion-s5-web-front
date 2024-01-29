@@ -28,8 +28,10 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import { isLoggedIn } from "service/token/Token";
 
 const AdminNavbar = () => {
+  let islogged = isLoggedIn();
   return (
     <>
       <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
@@ -62,7 +64,9 @@ const AdminNavbar = () => {
                 </Col>
               </Row>
             </div>
-            <Nav className="ml-auto" navbar>
+            
+            {
+              islogged ? (<Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink className="nav-link-icon" to="/" tag={Link}>
                   <i className="ni ni-planet" />
@@ -95,7 +99,8 @@ const AdminNavbar = () => {
                   <span className="nav-link-inner--text">Profile</span>
                 </NavLink>
               </NavItem>
-            </Nav>
+            </Nav>) : (<p></p>)
+            }
           </UncontrolledCollapse>
         </Container>
       </Navbar>

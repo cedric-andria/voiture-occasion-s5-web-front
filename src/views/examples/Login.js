@@ -33,12 +33,16 @@ import {
   Col,
 } from "reactstrap";
 import { callPost } from "service/api/Api";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
     email: 'jean@gmail.com',
     password: 'jean'
   });
+
+  const navigate = useNavigate();
+  // const [token, setToken] = useState({});
 
   const onChange = (e) => {
     setCredentials({
@@ -47,14 +51,18 @@ const Login = () => {
     })
   }
 
-  const Proceedlogin = (e) => {
+  const Proceedlogin = async(e) => {
     e.preventDefault();
     let data = {
         "identifiant": credentials.email,
         "mdp": credentials.password,
     }
     console.log(data);
-    callPost("http://localhost:8080/user/login", JSON.stringify(data), false);
+    let temp = await callPost("http://localhost:8080/user/login", JSON.stringify(data), false);
+    localStorage.setItem('token', temp.access_token);
+    if (localStorage.getItem('token')!==undefined) {
+      navigate('/admin/index');
+    }
     //callPost("http://localhost:8080/ws/sendmessages/jean/jean2", JSON.stringify(dt), false);
     //console.log(token);
   }
@@ -113,24 +121,7 @@ const Login = () => {
           </CardBody>
         </Card>
         <Row className="mt-3">
-          <Col xs="6">
-            <a
-              className="text-light"
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
-            >
-              <small>Forgot password?</small>
-            </a>
-          </Col>
-          <Col className="text-right" xs="6">
-            <a
-              className="text-light"
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
-            >
-              <small>Create new account</small>
-            </a>
-          </Col>
+          
         </Row>
       </Col>
     </>
