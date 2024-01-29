@@ -105,5 +105,19 @@ var routes = [
     component: <InsertModele />,
     layout: "/auth",
   },
+  {
+    path: "/ModeleVoiture",
+    name: "Modele de Voiture",
+    icon: "ni ni-cart text-purple",
+    component: <ModeleVoiture />,
+    layout: "/admin",
+  },
+  {
+    path: "/Statistique",
+    name: "Statistique de vente",
+    icon: "ni ni-chart-bar-32 text-blue",
+    component: <Statistique />,
+    layout: "/admin",
+  },
 ];
 export default routes;
