@@ -34,6 +34,7 @@ export const callPost = (url = "", data, logged = false) => {
     return toReturn;
 }
 
+
 export const callGet = async (url = "", logged = false) => {
     let headers = {
         headers:{
