@@ -29,11 +29,9 @@ import {
   Col,
 } from "reactstrap";
 import { isLoggedIn } from "service/token/Token";
-import { useNavigate } from "react-router-dom";
 
 const AdminNavbar = () => {
   let islogged = isLoggedIn();
-  const navigate = useNavigate();
   return (
     <>
       <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">

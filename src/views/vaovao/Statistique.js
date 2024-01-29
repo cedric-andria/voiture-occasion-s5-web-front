@@ -4,16 +4,19 @@ import { useState } from "react";
 import { Line } from "react-chartjs-2";
 import { NavLink } from "react-router-dom";
 import { Card, CardBody, CardHeader, Col, Container, Nav, NavItem, Row } from "reactstrap";
+// import {
+//     chartOptions,
+//     parseOptions,
+//     chartExample1,
+//     chartExample2,
+//   } from "variables/charts.js";
 import {
-    chartOptions,
-    parseOptions,
-    chartExample1,
-    chartExample2,
+    chartExample1
   } from "variables/charts.js";
 
 
 const Statistique = () =>{
-    const [statistiques,setStatistiques] = useState([]);
+    // const [statistiques,setStatistiques] = useState([]);
     const [activeNav, setActiveNav] = useState(1);
     const [chartExample1Data, setChartExample1Data] = useState("data1");
     const toggleNavs = (e, index) => {

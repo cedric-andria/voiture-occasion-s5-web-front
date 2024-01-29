@@ -23,8 +23,8 @@ const validateAnnonce = async(annonce) => {
     // console.log('annonce to update.id = ' + annonce.id);
     // console.log('annonce to update : ')
     // console.log(annonce);
-    const token = localStorage.getItem("token");
-    const validate_ws_response = await callPut('https://unnatural-coat-production.up.railway.app/annonces/' + annonce.id, annonce);
+    // const token = localStorage.getItem("token");
+    await callPut('https://unnatural-coat-production.up.railway.app/annonces/' + annonce.id, annonce);
     // console.log('updateCalled + 1 : ' + (updateCalled + 1));
     console.log('updateCalled avant set : ' + updateCalled);
 
