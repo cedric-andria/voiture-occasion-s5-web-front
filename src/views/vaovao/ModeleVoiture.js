@@ -1,10 +1,70 @@
 import Header from "components/Headers/Header";
-import { useState } from "react";
-import { Button, Card, Col, Container, Row } from "reactstrap";
+import { useEffect, useState } from "react";
+import { Button, Card, Col, Container, Input, Row, Form } from "reactstrap";
 
 
 const ModeleVoiture = () =>{
-    const [models,setModels] = useState([]);
+    const [nom,setNom] = useState("");
+    const [marque,setMarque] = useState(0);
+    const [marques,setMarques] = useState([]);
+
+    /* Données dans le Select */
+    const fetchData = async() => 
+    {
+        try {
+          const response = await fetch('http://localhost:8080/Marque');
+          
+          if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des marques');
+          }
+          const data = await response.json();
+          // console.log(data)
+          setMarques(data);
+        } catch (error) {
+          console.error('Erreur lors de la récupération des marques :', error);
+        }
+    };
+    useEffect(() => 
+        {
+        fetchData();
+        }, []
+    );
+
+    /* Traitement des données input */
+
+    const onChange =(e)=>
+    {
+        e.preventDefault();
+        setNom(e.target.value);
+        console.log("Nom : ",nom);
+    }
+    const changeSelect=(e)=>
+    {
+        e.preventDefault();
+        setMarque(e.target.value)
+        console.log("----------------------------- marque : "+JSON.stringify(marque));
+    }
+
+    /* Insertion des données input */
+
+    const createModele = async(e) =>
+    {
+        e.preventDefault();
+        console.log("Datas : ",JSON.stringify({"nom" : nom,"id_marque" : marque}));
+        await fetch('http://localhost:8080/modele',
+        {method:"post",body:
+            JSON.stringify(
+                {
+                    "nom" : nom,
+                    "id_marque" : marque
+                }
+            ),headers:{"Content-Type":"application/json"}
+        })
+        .catch(error => console.error('Error eo @ insert',error));
+        console.log("Nety eh");
+        setNom("");
+        setMarque(0);
+    }
     return (
         <>
             <Header />
@@ -12,7 +72,33 @@ const ModeleVoiture = () =>{
             <Container className="mt--7" fluid>
                 <Row>
                     <Col className="order-xl-1" xl="12" >
-                        <h1>Modele de Voiture</h1>
+                        <Card className="card-profile shadow">
+                            <Col md="12">
+                                <Form role="form" onSubmit={createModele}>
+                                <div class="ct-page-title"><h1 class="ct-title" id="content">Insertion de Modele</h1><div class="avatar-group mt-3"></div></div>
+                                    <Input
+                                        id="exampleFormControlInput1"
+                                        placeholder="Nom du Modele"
+                                        name="nom"
+                                        type="text"
+                                        value={nom}
+                                        onChange={onChange}
+                                    />
+                                    <select block size="lg" name="marq" id="marq" onChange={changeSelect} className="select_perso">
+                                        <option desable>Choisir une marque</option>
+                                        {
+                                            marques.map((marq,index) =>
+                                            (
+                                                <option value={marq.id}>{marq.nom}</option>        
+                                            ))
+                                        }
+                                    </select>
+                                <Button block color="primary" size="lg" type="submit">
+                                    Valider 
+                                </Button>
+                                </Form> 
+                            </Col>
+                        </Card>
                     </Col>
                 </Row>
             </Container>
