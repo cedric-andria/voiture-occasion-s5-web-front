@@ -11,14 +11,18 @@ export const callPost = async(url = "", data, logged = false) => {
         let toReturn = [];
         let headers = {
             "Content-Type": "application/json"
+
         }
+    
         if (logged) {
             headers = getHeaderJWT();
         }
         toReturn = await fetch(url, {
             method: "POST",
             body: data,
-            headers: headers
+            headers: {
+                ...headers
+            }
         })
         toReturn = await toReturn.json()
         console.log(toReturn);
@@ -33,11 +37,12 @@ export const callPost = async(url = "", data, logged = false) => {
         // });
         // console.log("To return : "+toReturn)
 
-     })
+    })
   
 }
 
-export const callGet = (url = "", data, logged = false) => {
+
+export const callGet = async (url = "", logged = false) => {
     let headers = {
         headers:{
             "Content-Type": "application/json"
@@ -45,19 +50,50 @@ export const callGet = (url = "", data, logged = false) => {
     }
     let toReturn = null;
     if (logged) {
+        console.log('Mandalo logged');
         headers = getHeaderJWT();
     }
-    fetch(url, {
-        method: "GET",
-        body: data,
+    await fetch(url, {
+        method: 'GET',
         ...headers
     })
     .then((response) => response.json())
     .then((data) => {
+        console.log("data API : ");
         console.log(data);
         toReturn = data;
     }).catch((error) => {
         console.log("Error");
+        console.error(error);
+    });
+
+    return toReturn;
+}
+
+export const callPut = (url = "", data, logged = false) => {
+    console.log("Calling url : "+url);
+    console.log("data put : ");
+    // console.log(JSON.stringify(data));
+    let headers = {
+        headers:{
+            "Content-Type": "application/json"
+        }
+    }
+    let toReturn = null;
+        if (logged) {
+            // headers = getHeaderJWT();
+        }
+        fetch(url, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            ...headers
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            toReturn = data;
+        }).catch((error) => {
+            console.log("Error");
         console.error(error);
     });
 
