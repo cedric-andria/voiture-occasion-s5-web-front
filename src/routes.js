@@ -24,7 +24,8 @@ import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
 import CategorieVoiture from "views/vaovao/CategorieVoiture.js";
 import MarqueVoiture from "views/vaovao/MarqueVoiture.js";
-
+import ListeAnnonce from "views/examples/ListeAnnonce";
+import InsertModele from "views/examples/InsertModele";
 
 var routes = [
   {
@@ -89,6 +90,20 @@ var routes = [
     icon: "ni ni-cart text-purple",
     component: <MarqueVoiture />,
     layout: "/admin",
+  },
+  {
+    path: "/ListeAnnonce",
+    name: "ListeAnnonce",
+    icon: "ni ni-circle-08 text-pink",
+    component: <ListeAnnonce />,
+    layout: "/auth",
+  },
+  {
+    path: "/InsertModele",
+    name: "InsertModele",
+    icon: "ni ni-circle-08 text-pink",
+    component: <InsertModele />,
+    layout: "/auth",
   },
 ];
 export default routes;
