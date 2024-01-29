@@ -22,6 +22,8 @@ import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
+import ListeAnnonce from "views/examples/ListeAnnonce";
+import InsertModele from "views/examples/InsertModele";
 
 var routes = [
   {
@@ -71,6 +73,20 @@ var routes = [
     name: "Register",
     icon: "ni ni-circle-08 text-pink",
     component: <Register />,
+    layout: "/auth",
+  },
+  {
+    path: "/ListeAnnonce",
+    name: "ListeAnnonce",
+    icon: "ni ni-circle-08 text-pink",
+    component: <ListeAnnonce />,
+    layout: "/auth",
+  },
+  {
+    path: "/InsertModele",
+    name: "InsertModele",
+    icon: "ni ni-circle-08 text-pink",
+    component: <InsertModele />,
     layout: "/auth",
   },
 ];
