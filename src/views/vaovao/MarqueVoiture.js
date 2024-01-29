@@ -36,7 +36,7 @@ import {
       // ----------------------------------------------------------------------------------------------------------------------------------------------
       const fetchData = async() => {
           try {
-            const response = await fetch('http://localhost:8080/Marque');
+            const response = await fetch('https://unnatural-coat-production.up.railway.app/Marque');
             
             if (!response.ok) {
               throw new Error('Erreur lors de la récupération des marques');
@@ -67,7 +67,7 @@ import {
       /* Mampiditra Marque any anaty base de données */
       const CreateMarque = async(e) =>{
           e.preventDefault();
-          await fetch('http://localhost:8080/Marque',
+          await fetch('https://unnatural-coat-production.up.railway.app/Marque',
           {method:"post",body:
           JSON.stringify(
             {...credentials}
@@ -108,7 +108,7 @@ import {
       /* Manao update an'ilay izy makany anaty base*/
       const updatingMarque = async(e) =>{
         e.preventDefault();
-        await fetch("http://localhost:8080/Marque/"+updateMarque.id+"?nom="+updateMarque.newName,{method:"PUT"})
+        await fetch("https://unnatural-coat-production.up.railway.app/Marque/"+updateMarque.id+"?nom="+updateMarque.newName,{method:"PUT"})
         .catch(error => console.error("Error eo @ Modification de l'id:"+updateMarque.id+" avec comme nom:"+updateMarque.newName,error));
         setInsert(insert+1);
         setUpdateMarque({

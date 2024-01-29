@@ -29,9 +29,11 @@ import {
   Col,
 } from "reactstrap";
 import { isLoggedIn } from "service/token/Token";
+import { useNavigate } from "react-router-dom";
 
 const AdminNavbar = () => {
   let islogged = isLoggedIn();
+  const navigate = useNavigate();
   return (
     <>
       <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
@@ -39,7 +41,7 @@ const AdminNavbar = () => {
           <NavbarBrand to="/" tag={Link}>
             <img
               alt="..."
-              src={require("../../assets/img/brand/argon-react-white.png")}
+              src={require("../../assets/img/brand/voiture-react-white.png")}
             />
           </NavbarBrand>
           <button className="navbar-toggler" id="navbar-collapse-main">

@@ -34,7 +34,7 @@ const Login = () => {
                   href=""
                   target="_blank"
                 >
-                  Cloud
+                  Cloud S5 P15
                 </a>
               </div>
             </Col>

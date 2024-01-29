@@ -12,7 +12,7 @@ const ModeleVoiture = () =>{
     const fetchData = async() => 
     {
         try {
-          const response = await fetch('http://localhost:8080/Marque');
+          const response = await fetch('https://unnatural-coat-production.up.railway.app/Marque');
           
           if (!response.ok) {
             throw new Error('Erreur lors de la récupération des marques');
@@ -51,7 +51,7 @@ const ModeleVoiture = () =>{
     {
         e.preventDefault();
         console.log("Datas : ",JSON.stringify({"nom" : nom,"id_marque" : marque}));
-        await fetch('http://localhost:8080/modele',
+        await fetch('https://unnatural-coat-production.up.railway.app/modele',
         {method:"post",body:
             JSON.stringify(
                 {

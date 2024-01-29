@@ -23,7 +23,7 @@ import {
         nom : ""
       });
       const [updateCategorie,setUpdateCategorie] = useState({
-        id :0,
+        id :1,
         newName :""
       });
       const [insert,setInsert] = useState(0);
@@ -37,7 +37,7 @@ import {
       const fetchData = async() => {
         /* window.setTimeout(async()=>{ */
           try {
-            const response = await fetch('http://localhost:8080/Categorie');
+            const response = await fetch('https://unnatural-coat-production.up.railway.app/Categorie');
             
             if (!response.ok) {
               throw new Error('Erreur lors de la récupération des catégories');
@@ -69,7 +69,7 @@ import {
       /* Mampiditra Categorie any anaty base de données */
       const CreateCategorie = async(e) =>{
           e.preventDefault();
-          await fetch('http://localhost:8080/Categorie',
+          await fetch('https://unnatural-coat-production.up.railway.app/Categorie',
           {method:"post",body:
           JSON.stringify(
             {...credentials}
@@ -110,7 +110,7 @@ import {
       /* Manao update an'ilay izy makany anaty base*/
       const updatingCategorie = async(e) =>{
         e.preventDefault();
-        await fetch("http://localhost:8080/Categorie/"+updateCategorie.id+"?nom="+updateCategorie.newName,{method:"PUT"})
+        await fetch("https://unnatural-coat-production.up.railway.app/Categorie/"+updateCategorie.id+"?nom="+updateCategorie.newName,{method:"PUT"})
         .catch(error => console.error("Error eo @ Modification de l'id:"+updateCategorie.id+" avec comme nom:"+updateCategorie.newName,error));
         setInsert(insert+1);
         setUpdateCategorie({
@@ -151,9 +151,8 @@ import {
                 <div class="ct-page-title"><h1 class="ct-title" id="content">Modification de Categorie</h1><div class="avatar-group mt-3"></div></div>
                 <Form role="form" onSubmit={updatingCategorie}>
                     <select block size="lg" name="categ" id="categ" onChange={changeSelect} className="select_perso">
-                        <option desable>Choisir un Categorie</option>        
-                        {categories.map((categ,index) =>(
-                          <option value={categ.id}>{categ.nom}</option>        
+                          {categories.map((categ,index) =>(
+                        <option value={categ.id}>{categ.nom}</option>        
                         ))}
                     </select>
                     <Input

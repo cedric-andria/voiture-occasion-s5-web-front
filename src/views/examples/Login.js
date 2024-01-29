@@ -58,10 +58,17 @@ const Login = () => {
         "mdp": credentials.password,
     }
     console.log(data);
-    let temp = await callPost("http://localhost:8080/user/login", JSON.stringify(data), false);
+    let temp = await callPost("https://unnatural-coat-production.up.railway.app/user/login", JSON.stringify(data), false);
     localStorage.setItem('token', temp.access_token);
-    if (localStorage.getItem('token')!==undefined) {
-      navigate('/admin/index');
+    if (localStorage.getItem('token') === 'undefined') {
+      console.log("undefined tokoa");
+      navigate('/user/login');
+    }
+    else
+    {
+      console.log("tsy undefined")
+      navigate('/admin/CategorieVoiture');
+
     }
     //callPost("http://localhost:8080/ws/sendmessages/jean/jean2", JSON.stringify(dt), false);
     //console.log(token);
