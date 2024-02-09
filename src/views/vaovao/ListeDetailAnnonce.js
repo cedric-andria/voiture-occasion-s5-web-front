@@ -125,6 +125,13 @@ import Modal from 'react-modal';
             filteredAnnonces = annoncesValidees.filter(annonce =>
                 (annonce.voiture.annee_sortie >= event.target.value) && (annonce.voiture.annee_sortie <= anneemax)
             );
+            if(document.getElementById('input_annee_minimum').value === "")
+            {
+                if(document.getElementById('input_annee_maximum').value === "")
+                {
+                    setAnnoncesValidees(annoncesValideesInit);
+                }
+            }
         }
         
         setAnnoncesValidees(filteredAnnonces);
@@ -142,6 +149,13 @@ import Modal from 'react-modal';
             filteredAnnonces = annoncesValidees.filter(annonce =>
                 (annonce.voiture.annee_sortie >= event.target.value) && (annonce.voiture.annee_sortie <= anneemax)
             );
+            if(document.getElementById('input_annee_maximum').value === "")
+            {
+                if(document.getElementById('input_annee_minimum').value === "")
+                {
+                    setAnnoncesValidees(annoncesValideesInit);
+                }
+            }
         }
        
         setAnnoncesValidees(filteredAnnonces);
