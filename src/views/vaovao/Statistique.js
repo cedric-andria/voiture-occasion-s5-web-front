@@ -34,10 +34,15 @@ const Statistique = () =>{
       const fetchData = async(critere) => {
         try {
           // const response = await fetch('https://unnatural-coat-production.up.railway.app/Marque');
-          const response = await callGet('http://localhost:8080/vente/stat' + critere, true);
+        //   const response = await callGet('http://localhost:8080/vente/stat' + critere, true);
+        const response = await callGet('https://back-end-voiture-occasion-production.up.railway.app/vente/stat' + critere, true);
           
-          const response_categorie = await callGet('http://localhost:8080/Categorie', true);
-          const response_marque= await callGet('http://localhost:8080/Marque', true);
+        //   const response_categorie = await callGet('http://localhost:8080/Categorie', true);
+        const response_categorie = await callGet('https://back-end-voiture-occasion-production.up.railway.app/Categorie', true);
+
+        //   const response_marque= await callGet('http://localhost:8080/Marque', true);
+        const response_marque= await callGet('https://back-end-voiture-occasion-production.up.railway.app/Marque', true);
+
 
           // if (!response.ok) {
           //   throw new Error('Erreur lors de la récupération des marques');

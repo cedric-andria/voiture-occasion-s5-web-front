@@ -60,7 +60,8 @@ import Modal from 'react-modal';
     const [anneemin, setAnneemin] = useState(0);
     const [anneemax, setAnneemax] = useState(3000);
     // const [wantFavorites, setWantFavorites] = useState(false);
-    const [urlannonce, setUrlannonce] = useState('http://localhost:8080/annonces/exceptuser');
+    // const [urlannonce, setUrlannonce] = useState('http://localhost:8080/annonces/exceptuser');
+    const [urlannonce, setUrlannonce] = useState('https://back-end-voiture-occasion-production.up.railway.app/annonces/exceptuser');
     const [colorBoutonfavori, setColorBoutonfavori] = useState("secondary");
     const [annoncesValideesInit, setAnnoncesValideesInit] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -197,7 +198,7 @@ import Modal from 'react-modal';
                         </Col>
                     </Row>
                     <Row>
-                    <Button id="boutonfavori" color={colorBoutonfavori} size="lg" type="button" onClick={() => {setUrlannonce('http://localhost:8080/annonces/favoris'); setColorBoutonfavori("primary")}}>
+                    <Button id="boutonfavori" color={colorBoutonfavori} size="lg" type="button" onClick={() => {setUrlannonce('https://back-end-voiture-occasion-production.up.railway.app/annonces/favoris'); setColorBoutonfavori("primary")}}>
                         Afficher favoris
                     </Button>
                     </Row>

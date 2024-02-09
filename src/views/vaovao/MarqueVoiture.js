@@ -38,7 +38,8 @@ import {
       const fetchData = async() => {
           try {
             // const response = await fetch('https://unnatural-coat-production.up.railway.app/Marque');
-            const response = await callGet('http://localhost:8080/Marque', true);
+            // const response = await callGet('http://localhost:8080/Marque', true);
+            const response = await callGet('https://back-end-voiture-occasion-production.up.railway.app/Marque', true);
 
             
             // if (!response.ok) {
@@ -77,7 +78,8 @@ import {
           //   {...credentials}
           // )
           // ,headers:{"Content-Type":"application/json"}})
-          await callPost('http://localhost:8080/Marque', JSON.stringify(credentials), true)
+          // await callPost('http://localhost:8080/Marque', JSON.stringify(credentials), true)
+          await callPost('https://back-end-voiture-occasion-production.up.railway.app/Marque', JSON.stringify(credentials), true)
           .catch(error => console.error('Error eo @ insert',error));
           console.log("Nety eh");
           // alert("Insert of Marque: "+JSON.stringify(credentials)+" success");
@@ -114,7 +116,8 @@ import {
       const updatingMarque = async(e) =>{
         e.preventDefault();
         // await fetch("https://unnatural-coat-production.up.railway.app/Marque/"+updateMarque.id+"?nom="+updateMarque.newName,{method:"PUT"})
-        await callPut("http://localhost:8080/Marque/"+updateMarque.id, {'id': updateMarque.id, 'nom': updateMarque.newName} , true)
+        // await callPut("http://localhost:8080/Marque/"+updateMarque.id, {'id': updateMarque.id, 'nom': updateMarque.newName} , true)
+        await callPut("https://back-end-voiture-occasion-production.up.railway.app/Marque/"+updateMarque.id, {'id': updateMarque.id, 'nom': updateMarque.newName} , true)
         .catch(error => console.error("Error eo @ Modification de l'id:"+updateMarque.id+" avec comme nom:"+updateMarque.newName,error));
         setInsert(insert+1);
         setUpdateMarque({

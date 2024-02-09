@@ -44,7 +44,9 @@ import {
             
 
             // const response = await fetch('https://unnatural-coat-production.up.railway.app/Categorie');
-            const response = await callGet('http://localhost:8080/Categorie', true);
+            // const response = await callGet('http://localhost:8080/Categorie', true);
+            const response = await callGet('https://back-end-voiture-occasion-production.up.railway.app/Categorie', true);
+
 
             
             // if (!response.ok) {
@@ -81,7 +83,8 @@ import {
       const CreateCategorie = async(e) =>{
           e.preventDefault();
           // await fetch('https://unnatural-coat-production.up.railway.app/Categorie',
-          await callPost('http://localhost:8080/Categorie', JSON.stringify(credentials), true)
+          // await callPost('http://localhost:8080/Categorie', JSON.stringify(credentials), true)
+          await callPost('https://back-end-voiture-occasion-production.up.railway.app/Categorie', JSON.stringify(credentials), true)
           .catch(error => console.error('Error eo @ insert',error));
           console.log("Nety eh");
           // alert("Insert of Categorie: "+JSON.stringify(credentials)+" success");
@@ -118,7 +121,8 @@ import {
       const updatingCategorie = async(e) =>{
         e.preventDefault();
         // await fetch("https://unnatural-coat-production.up.railway.app/Categorie/"+updateCategorie.id+"?nom="+updateCategorie.newName,{method:"PUT"})
-        await callPut("http://localhost:8080/Categorie/"+updateCategorie.id, {'id': updateCategorie.id, 'nom': updateCategorie.newName}, true)
+        // await callPut("http://localhost:8080/Categorie/"+updateCategorie.id, {'id': updateCategorie.id, 'nom': updateCategorie.newName}, true)
+        await callPut("https://back-end-voiture-occasion-production.up.railway.app/Categorie/"+updateCategorie.id, {'id': updateCategorie.id, 'nom': updateCategorie.newName}, true)
         .catch(error => console.error("Error eo @ Modification de l'id:"+updateCategorie.id+" avec comme nom:"+updateCategorie.newName,error));
         setInsert(insert+1);
         setUpdateCategorie({

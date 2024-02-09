@@ -26,7 +26,8 @@ import {
   {
     try {
       // const annonce_ws_response = await callGet('https://unnatural-coat-production.up.railway.app/annonces/etat/lessthan/10');
-      const histo_ws_response = await callGet('http://localhost:8080/historique_annonce/current_user', true);
+      // const histo_ws_response = await callGet('http://localhost:8080/historique_annonce/current_user', true);
+      const histo_ws_response = await callGet('https://back-end-voiture-occasion-production.up.railway.app/historique_annonce/current_user', true);
       // if (!histo_ws_response.ok) {
       //   throw new Error('Bad HttpStatus');
       // }
