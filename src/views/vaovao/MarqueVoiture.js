@@ -25,7 +25,7 @@ import {
       });
       const [updateMarque,setUpdateMarque] = useState({
         id :1,
-        newName :""
+        newName :"mavesatra"
       });
       const [insert,setInsert] = useState(0);
   
