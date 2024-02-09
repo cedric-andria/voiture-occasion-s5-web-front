@@ -76,7 +76,7 @@ const ModeleVoiture = () =>{
                 }), true)
         .catch(error => console.error('Error eo @ insert',error));
         console.log("Nety eh");
-        setNom("");
+        setNom("GasyCar");
         setMarque(0);
     }
     return (
