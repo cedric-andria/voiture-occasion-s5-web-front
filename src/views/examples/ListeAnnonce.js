@@ -24,11 +24,15 @@ const validateAnnonce = async(annonce) => {
     // console.log('annonce to update : ')
     // console.log(annonce);
     // const token = localStorage.getItem("token");
-    await callPut('https://unnatural-coat-production.up.railway.app/annonces/' + annonce.id, annonce);
+    // await callPut('https://unnatural-coat-production.up.railway.app/annonces/' + annonce.id, annonce);
+    await callPut('http://localhost:8080/annonces/' + annonce.id, annonce);
+
     // console.log('updateCalled + 1 : ' + (updateCalled + 1));
     console.log('updateCalled avant set : ' + updateCalled);
 
-    const annonce_ws_response = await callGet('https://unnatural-coat-production.up.railway.app/annonces/etat/lessthan/10');
+    // const annonce_ws_response = await callGet('https://unnatural-coat-production.up.railway.app/annonces/etat/lessthan/10');
+    const annonce_ws_response = await callGet('http://localhost:8080/annonces/etat/lessthan/10');
+
     // const annonce_ws_response = await fetch('http://localhost:8080/annonces/etat/lessthan/10');
     // if (!annonce_ws_response.ok) {
     //   throw new Error('Bad HttpStatus');
@@ -56,8 +60,8 @@ const validateAnnonce = async(annonce) => {
 const fetchAnnonces = async() =>
 {
   try {
-    const annonce_ws_response = await callGet('https://unnatural-coat-production.up.railway.app/annonces/etat/lessthan/10');
-    // const annonce_ws_response = await fetch('http://localhost:8080/annonces/etat/lessthan/10');
+    // const annonce_ws_response = await callGet('https://unnatural-coat-production.up.railway.app/annonces/etat/lessthan/10');
+    const annonce_ws_response = await callGet('http://localhost:8080/annonces/etat/lessthan/10');
     // if (!annonce_ws_response.ok) {
     //   throw new Error('Bad HttpStatus');
     // }

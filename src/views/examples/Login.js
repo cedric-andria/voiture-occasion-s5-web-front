@@ -31,13 +31,13 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import { callPost } from "service/api/Api";
+import { callPost, callGet } from "service/api/Api";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    email: 'jean@gmail.com',
-    password: 'jean'
+    email: 'rabe@gmail.com',
+    password: 'rabe123'
   });
 
   const navigate = useNavigate();
@@ -57,16 +57,24 @@ const Login = () => {
         "mdp": credentials.password,
     }
     console.log(data);
-    let temp = await callPost("https://unnatural-coat-production.up.railway.app/user/login", JSON.stringify(data), false);
+    // let temp = await callPost("https://unnatural-coat-production.up.railway.app/user/login", JSON.stringify(data), false);
+    let temp = await callPost("http://localhost:8080/user/login", JSON.stringify(data), false);
     localStorage.setItem('token', temp.access_token);
     if (localStorage.getItem('token') === 'undefined') {
       console.log("undefined tokoa");
-      navigate('/user/login');
+      navigate('/auth/login');
     }
     else
     {
       console.log("tsy undefined")
-      navigate('/admin/CategorieVoiture');
+      const response_profil = await callGet('http://localhost:8080/user/checkprofil', true);
+      if (response_profil['idprofil'] !== 2) {
+        navigate('/simple/ListeDetailAnnonce')
+      }
+      else
+      {
+        navigate('/admin/CategorieVoiture');
+      }
 
     }
     //callPost("http://localhost:8080/ws/sendmessages/jean/jean2", JSON.stringify(dt), false);
@@ -81,6 +89,7 @@ const Login = () => {
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
               <small>Sign in</small>
+              <h2>Si backoffice : identifiant = admin@gmail.com    mdp = admin123</h2>
             </div>
             <Form role="form" onSubmit={Proceedlogin}>
               <FormGroup className="mb-3">

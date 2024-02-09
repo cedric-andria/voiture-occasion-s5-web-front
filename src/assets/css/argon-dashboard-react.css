@@ -16232,11 +16232,11 @@ a.btn-icon-only {
 
 .chart {
   position: relative;
-  height: 350px;
+  height: 30vh;
 }
 
 .chart-sm {
-  height: 230px;
+  height: 20vh;
 }
 
 .chart-legend {

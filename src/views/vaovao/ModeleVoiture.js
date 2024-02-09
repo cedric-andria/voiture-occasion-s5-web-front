@@ -1,6 +1,8 @@
 import Header from "components/Headers/Header";
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Input, Row, Form } from "reactstrap";
+import { callPost } from "service/api/Api";
+import { callGet } from "service/api/Api";
 
 
 const ModeleVoiture = () =>{
@@ -12,12 +14,16 @@ const ModeleVoiture = () =>{
     const fetchData = async() => 
     {
         try {
-          const response = await fetch('https://unnatural-coat-production.up.railway.app/Marque');
+        //   const response = await fetch('https://unnatural-coat-production.up.railway.app/Marque');
+          const response = await callGet('http://localhost:8080/Marque');
+
           
-          if (!response.ok) {
-            throw new Error('Erreur lors de la récupération des marques');
-          }
-          const data = await response.json();
+        //   if (!response.ok) {
+        //     throw new Error('Erreur lors de la récupération des marques');
+        //   }
+        //   const data = await response.json();
+            const data = response;
+
           // console.log(data)
           setMarques(data);
         } catch (error) {
@@ -51,15 +57,21 @@ const ModeleVoiture = () =>{
     {
         e.preventDefault();
         console.log("Datas : ",JSON.stringify({"nom" : nom,"id_marque" : marque}));
-        await fetch('https://unnatural-coat-production.up.railway.app/modele',
-        {method:"post",body:
+        // await fetch('https://unnatural-coat-production.up.railway.app/modele',
+        // {method:"post",body:
+        //     JSON.stringify(
+        //         {
+        //             "nom" : nom,
+        //             "id_marque" : marque
+        //         }
+        //     ),headers:{"Content-Type":"application/json"}
+        // })
+        await callPost('http://localhost:8080/modele',
             JSON.stringify(
                 {
                     "nom" : nom,
                     "id_marque" : marque
-                }
-            ),headers:{"Content-Type":"application/json"}
-        })
+                }), true)
         .catch(error => console.error('Error eo @ insert',error));
         console.log("Nety eh");
         setNom("");

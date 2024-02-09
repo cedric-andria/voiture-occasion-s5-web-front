@@ -16,6 +16,7 @@ import {
   import Header from "components/Headers/Header.js";
   
   import { useState, useEffect } from "react";
+  import { callGet, callPost, callPut } from "service/api/Api";
   
   const MarqueVoiture = () => {
       const [marques, setMarques] = useState([]);
@@ -23,7 +24,7 @@ import {
         nom : ""
       });
       const [updateMarque,setUpdateMarque] = useState({
-        id :0,
+        id :1,
         newName :""
       });
       const [insert,setInsert] = useState(0);
@@ -36,12 +37,14 @@ import {
       // ----------------------------------------------------------------------------------------------------------------------------------------------
       const fetchData = async() => {
           try {
-            const response = await fetch('https://unnatural-coat-production.up.railway.app/Marque');
+            // const response = await fetch('https://unnatural-coat-production.up.railway.app/Marque');
+            const response = await callGet('http://localhost:8080/Marque', true);
+
             
-            if (!response.ok) {
-              throw new Error('Erreur lors de la récupération des marques');
-            }
-            const data = await response.json();
+            // if (!response.ok) {
+            //   throw new Error('Erreur lors de la récupération des marques');
+            // }
+            const data = response;
             // console.log(data)
             setMarques(data);
           } catch (error) {
@@ -60,19 +63,21 @@ import {
             ...credentials,
             [e.target.name] : e.target.value, 
         })
-        // console.log(credentials);
+        console.log(JSON.stringify(credentials));
       }
 
       // ----------------------------------------------------------------------------------------------------------------------------------------------
       /* Mampiditra Marque any anaty base de données */
       const CreateMarque = async(e) =>{
           e.preventDefault();
-          await fetch('https://unnatural-coat-production.up.railway.app/Marque',
-          {method:"post",body:
-          JSON.stringify(
-            {...credentials}
-          )
-          ,headers:{"Content-Type":"application/json"}})
+          // await fetch('https://unnatural-coat-production.up.railway.app/Marque',
+          // await fetch('http://localhost:8080/Marque',
+          // {method:"post",body:
+          // JSON.stringify(
+          //   {...credentials}
+          // )
+          // ,headers:{"Content-Type":"application/json"}})
+          await callPost('http://localhost:8080/Marque', JSON.stringify(credentials), true)
           .catch(error => console.error('Error eo @ insert',error));
           console.log("Nety eh");
           // alert("Insert of Marque: "+JSON.stringify(credentials)+" success");
@@ -108,7 +113,8 @@ import {
       /* Manao update an'ilay izy makany anaty base*/
       const updatingMarque = async(e) =>{
         e.preventDefault();
-        await fetch("https://unnatural-coat-production.up.railway.app/Marque/"+updateMarque.id+"?nom="+updateMarque.newName,{method:"PUT"})
+        // await fetch("https://unnatural-coat-production.up.railway.app/Marque/"+updateMarque.id+"?nom="+updateMarque.newName,{method:"PUT"})
+        await callPut("http://localhost:8080/Marque/"+updateMarque.id, {'id': updateMarque.id, 'nom': updateMarque.newName} , true)
         .catch(error => console.error("Error eo @ Modification de l'id:"+updateMarque.id+" avec comme nom:"+updateMarque.newName,error));
         setInsert(insert+1);
         setUpdateMarque({

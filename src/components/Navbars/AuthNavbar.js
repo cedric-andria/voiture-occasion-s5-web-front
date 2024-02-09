@@ -70,10 +70,10 @@ const AdminNavbar = () => {
               <NavItem>
                 <NavLink className="nav-link-icon" to="/" tag={Link}>
                   <i className="ni ni-planet" />
-                  <span className="nav-link-inner--text">Dashboard</span>
+                  <span className="nav-link-inner--text">Accueil</span>
                 </NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink
                   className="nav-link-icon"
                   to="/auth/register"
@@ -98,7 +98,7 @@ const AdminNavbar = () => {
                   <i className="ni ni-single-02" />
                   <span className="nav-link-inner--text">Profile</span>
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
             </Nav>) : (<p></p>)
             }
           </UncontrolledCollapse>

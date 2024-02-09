@@ -16,6 +16,8 @@ import {
   import Header from "components/Headers/Header.js";
   
   import { useState, useEffect } from "react";
+  import { callGet, callPost, callPut } from "service/api/Api";
+// import { useNavigate } from "react-router-dom";
   
   const CategorieVoiture = () => {
       const [categories, setCategories] = useState([]);
@@ -27,6 +29,7 @@ import {
         newName :""
       });
       const [insert,setInsert] = useState(0);
+      // const navigate = useNavigate();
   
       /* useEffect(() => {
           fetch('http://localhost:8080/Categorie/all').then(response => response.json()).then(data => setCategories(data))
@@ -37,16 +40,24 @@ import {
       const fetchData = async() => {
         /* window.setTimeout(async()=>{ */
           try {
-            const response = await fetch('https://unnatural-coat-production.up.railway.app/Categorie');
+            //check user proifile first
             
-            if (!response.ok) {
-              throw new Error('Erreur lors de la récupération des catégories');
-            }
-            const data = await response.json();
+
+            // const response = await fetch('https://unnatural-coat-production.up.railway.app/Categorie');
+            const response = await callGet('http://localhost:8080/Categorie', true);
+
+            
+            // if (!response.ok) {
+            //   throw new Error('Erreur lors de la récupération des catégories');
+            // }
+            // const data = await response.json();
+            const data = response;
+
             // console.log(data)
             setCategories(data);
           } catch (error) {
             console.error('Erreur lors de la récupération des catégories :', error);
+            //je suppose ici hoe ny seul erreur mety misy eo amle fetchCategories ilay resaka token, du coup averiko any am login
           }
         /* },2000) */
       };
@@ -62,19 +73,15 @@ import {
             ...credentials,
             [e.target.name] : e.target.value, 
         })
-        // console.log(credentials);
+        console.log(JSON.stringify(credentials));
       }
 
       // ----------------------------------------------------------------------------------------------------------------------------------------------
       /* Mampiditra Categorie any anaty base de données */
       const CreateCategorie = async(e) =>{
           e.preventDefault();
-          await fetch('https://unnatural-coat-production.up.railway.app/Categorie',
-          {method:"post",body:
-          JSON.stringify(
-            {...credentials}
-          )
-          ,headers:{"Content-Type":"application/json"}})
+          // await fetch('https://unnatural-coat-production.up.railway.app/Categorie',
+          await callPost('http://localhost:8080/Categorie', JSON.stringify(credentials), true)
           .catch(error => console.error('Error eo @ insert',error));
           console.log("Nety eh");
           // alert("Insert of Categorie: "+JSON.stringify(credentials)+" success");
@@ -110,7 +117,8 @@ import {
       /* Manao update an'ilay izy makany anaty base*/
       const updatingCategorie = async(e) =>{
         e.preventDefault();
-        await fetch("https://unnatural-coat-production.up.railway.app/Categorie/"+updateCategorie.id+"?nom="+updateCategorie.newName,{method:"PUT"})
+        // await fetch("https://unnatural-coat-production.up.railway.app/Categorie/"+updateCategorie.id+"?nom="+updateCategorie.newName,{method:"PUT"})
+        await callPut("http://localhost:8080/Categorie/"+updateCategorie.id, {'id': updateCategorie.id, 'nom': updateCategorie.newName}, true)
         .catch(error => console.error("Error eo @ Modification de l'id:"+updateCategorie.id+" avec comme nom:"+updateCategorie.newName,error));
         setInsert(insert+1);
         setUpdateCategorie({
@@ -151,7 +159,7 @@ import {
                 <div class="ct-page-title"><h1 class="ct-title" id="content">Modification de Categorie</h1><div class="avatar-group mt-3"></div></div>
                 <Form role="form" onSubmit={updatingCategorie}>
                     <select block size="lg" name="categ" id="categ" onChange={changeSelect} className="select_perso">
-                          {categories.map((categ,index) =>(
+                          { categories && categories.map((categ,index) =>(
                         <option value={categ.id}>{categ.nom}</option>        
                         ))}
                     </select>
@@ -188,7 +196,7 @@ import {
                             </tr>
                             </thead>
                             <tbody>
-                            {categories.map((categ,index) =>(
+                            {categories && categories.map((categ,index) =>(
                                 <tr>
                                     <td>{categ.id}</td>
                                     <td>{categ.nom}</td>

@@ -63,10 +63,11 @@ const Auth = (props) => {
             <div className="header-body text-center mb-7">
               <Row className="justify-content-center">
                 <Col lg="5" md="6">
-                  <h1 className="text-white">Bienvenue!</h1>
-                  <p className="text-lead text-light">
+                  <h1 className="text-white">Bienvenue sur LeBonOccasi</h1>
+                  <h3>la plateforme de vente de voiture d'occasion</h3>
+                  {/* <p className="text-lead text-light">
                     Le meilleur site de vente de voitures d'occasion
-                  </p>
+                  </p> */}
                 </Col>
               </Row>
             </div>
