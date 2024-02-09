@@ -100,7 +100,7 @@ import Modal from 'react-modal';
         console.log(searchTerm);
 
         setSearchTerm(event.target.value);
-        const filteredAnnonces = annoncesValidees.filter(annonce =>
+        var filteredAnnonces = annoncesValidees.filter(annonce =>
             annonce.description.toLowerCase().includes(event.target.value.toLowerCase()) && (annonce.voiture.annee_sortie >= anneemin) && (annonce.voiture.annee_sortie <= anneemax)
         );
         if (document.getElementById('inputsearch').value === "") {
@@ -117,7 +117,7 @@ import Modal from 'react-modal';
         setAnnoncesValidees(annoncesValideesInit);
         setAnneemin(event.target.value);
 
-        const filteredAnnonces = annoncesValidees.filter(annonce =>
+        var filteredAnnonces = annoncesValidees.filter(annonce =>
             annonce.description.toLowerCase().includes(document.getElementById('inputsearch').value.toLowerCase()) && (annonce.voiture.annee_sortie >= event.target.value) && (annonce.voiture.annee_sortie <= anneemax)
         );
         if ((document.getElementById('inputsearch').value === "") && (document.getElementById('input_annee_minimum').value === "") && (document.getElementById('input_annee_maximum').value === "")) {
@@ -133,7 +133,7 @@ import Modal from 'react-modal';
         // setSearchTerm(event.target.value);
         setAnnoncesValidees(annoncesValideesInit);
         setAnneemax(event.target.value);
-        const filteredAnnonces = annoncesValidees.filter(annonce =>
+        var filteredAnnonces = annoncesValidees.filter(annonce =>
             annonce.description.toLowerCase().includes(document.getElementById('inputsearch').value.toLowerCase()) && (annonce.voiture.annee_sortie >= anneemin) && (annonce.voiture.annee_sortie <= event.target.value)
         );
         if ((document.getElementById('inputsearch').value === "") && (document.getElementById('input_annee_minimum').value === "") && (document.getElementById('input_annee_maximum').value === "")) {
