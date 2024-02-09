@@ -120,13 +120,15 @@ import Modal from 'react-modal';
         var filteredAnnonces = annoncesValidees.filter(annonce =>
             annonce.description.toLowerCase().includes(document.getElementById('inputsearch').value.toLowerCase()) && (annonce.voiture.annee_sortie >= event.target.value) && (annonce.voiture.annee_sortie <= anneemax)
         );
-        if ((document.getElementById('inputsearch').value === "") && (document.getElementById('input_annee_minimum').value === "") && (document.getElementById('input_annee_maximum').value === "")) {
-            setAnnoncesValidees(annoncesValideesInit);
+        if (document.getElementById('inputsearch').value === "") {
+            // setAnnoncesValidees(annoncesValideesInit);
+            filteredAnnonces = annoncesValidees.filter(annonce =>
+                (annonce.voiture.annee_sortie >= event.target.value) && (annonce.voiture.annee_sortie <= anneemax)
+            );
         }
-        else
-        {
-            setAnnoncesValidees(filteredAnnonces);
-        }
+        
+        setAnnoncesValidees(filteredAnnonces);
+        
     };
 
     const handleChangeanneemax = (event) => {
@@ -136,13 +138,13 @@ import Modal from 'react-modal';
         var filteredAnnonces = annoncesValidees.filter(annonce =>
             annonce.description.toLowerCase().includes(document.getElementById('inputsearch').value.toLowerCase()) && (annonce.voiture.annee_sortie >= anneemin) && (annonce.voiture.annee_sortie <= event.target.value)
         );
-        if ((document.getElementById('inputsearch').value === "") && (document.getElementById('input_annee_minimum').value === "") && (document.getElementById('input_annee_maximum').value === "")) {
-            setAnnoncesValidees(annoncesValideesInit);
+        if (document.getElementById('inputsearch').value === "") {
+            filteredAnnonces = annoncesValidees.filter(annonce =>
+                (annonce.voiture.annee_sortie >= event.target.value) && (annonce.voiture.annee_sortie <= anneemax)
+            );
         }
-        else
-        {
-            setAnnoncesValidees(filteredAnnonces);
-        }
+       
+        setAnnoncesValidees(filteredAnnonces);
     };
     return (
       <>
