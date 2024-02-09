@@ -26,7 +26,7 @@ import {
       });
       const [updateCategorie,setUpdateCategorie] = useState({
         id :1,
-        newName :"Malaky"
+        newName :"particulier"
       });
       const [insert,setInsert] = useState(0);
       // const navigate = useNavigate();
