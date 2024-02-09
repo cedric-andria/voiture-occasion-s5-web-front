@@ -22,11 +22,11 @@ import {
   const CategorieVoiture = () => {
       const [categories, setCategories] = useState([]);
       const [credentials, setCredentials] = useState({
-        nom : ""
+        nom : "particulier"
       });
       const [updateCategorie,setUpdateCategorie] = useState({
         id :1,
-        newName :"particulier"
+        newName :""
       });
       const [insert,setInsert] = useState(0);
       // const navigate = useNavigate();
