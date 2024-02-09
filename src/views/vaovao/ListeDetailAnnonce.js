@@ -127,8 +127,10 @@ import Modal from 'react-modal';
             );
             if(document.getElementById('input_annee_minimum').value === "")
             {
+                setAnneemin(0);
                 if(document.getElementById('input_annee_maximum').value === "")
                 {
+                    setAnneemax(3000);
                     setAnnoncesValidees(annoncesValideesInit);
                 }
             }
@@ -151,8 +153,10 @@ import Modal from 'react-modal';
             );
             if(document.getElementById('input_annee_maximum').value === "")
             {
+                setAnneemax(3000);
                 if(document.getElementById('input_annee_minimum').value === "")
                 {
+                    setAnneemin(0);
                     setAnnoncesValidees(annoncesValideesInit);
                 }
             }
