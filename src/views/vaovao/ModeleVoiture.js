@@ -6,7 +6,7 @@ import { callGet } from "service/api/Api";
 
 
 const ModeleVoiture = () =>{
-    const [nom,setNom] = useState("");
+    const [nom,setNom] = useState("GasyCar");
     const [marque,setMarque] = useState(0);
     const [marques,setMarques] = useState([]);
 
@@ -76,7 +76,7 @@ const ModeleVoiture = () =>{
                 }), true)
         .catch(error => console.error('Error eo @ insert',error));
         console.log("Nety eh");
-        setNom("GasyCar");
+        setNom("");
         setMarque(0);
     }
     return (
